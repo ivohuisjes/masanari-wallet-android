@@ -107,6 +107,8 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import static com.masanari.wallet.MasanariWallet.enableMasanariFeeViaBIP47;
+
 public class BIP47Activity extends Activity {
 
     private static final int EDIT_PCODE = 2000;
@@ -1098,7 +1100,9 @@ public class BIP47Activity extends Activity {
         final HashMap<String, BigInteger> receivers = new HashMap<String, BigInteger>();
         receivers.put(Hex.toHexString(op_return), BigInteger.ZERO);
         receivers.put(payment_code.notificationAddress().getAddressString(), SendNotifTxFactory._bNotifTxValue);
-        receivers.put(MasanariWallet.getInstance().isTestNet() ? SendNotifTxFactory.TESTNET_MASANARI_NOTIF_TX_FEE_ADDRESS : SendNotifTxFactory.MASANARI_NOTIF_TX_FEE_ADDRESS, SendNotifTxFactory._bSWFee);
+        if(enableMasanariFeeViaBIP47) {
+            receivers.put(MasanariWallet.getInstance().isTestNet() ? SendNotifTxFactory.TESTNET_MASANARI_NOTIF_TX_FEE_ADDRESS : SendNotifTxFactory.MASANARI_NOTIF_TX_FEE_ADDRESS, SendNotifTxFactory._bSWFee);
+        }
 
         final long change = totalValueSelected - (amount + fee.longValue());
         if(change > 0L)  {

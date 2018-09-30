@@ -23,7 +23,12 @@ public class MasanariWallet {
     public final static int NB_ACCOUNTS = 2;
 
     public static final BigInteger bDust = BigInteger.valueOf(Coin.parseCoin("0.00000546").longValue());    // https://github.com/bitcoin/bitcoin/pull/2760
-    public static final BigInteger bFee = BigInteger.valueOf(Coin.parseCoin("0.00015").longValue());
+
+    /* Developer fees */
+    public static boolean enableMasanariFeeViaBIP47 = false;
+    public static final BigInteger bFee = BigInteger.valueOf(Coin.parseCoin("0").longValue()); // default 0.00015
+    public final static BigInteger masanariFeeAmountV1 = BigInteger.valueOf(0L); // default: 200000L
+    public final static BigInteger masanariFeeAmountV2 = BigInteger.valueOf(0L); // default: 200000L
 
     public static final long RBF_SEQUENCE_NO = 0xffffffff - 2;
 

@@ -47,15 +47,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.spongycastle.util.encoders.Hex;
 
+import static com.masanari.wallet.MasanariWallet.masanariFeeAmountV1;
+import static com.masanari.wallet.MasanariWallet.masanariFeeAmountV2;
+
 public class RicochetMeta {
 
     private final static String MASANARI_RICOCHET_TX_FEE_ADDRESS = "bc1qkymumss6zj0rxy9l3v5vqxqwwffy8jjsw3c9cm";
     private final static String TESTNET_MASANARI_RICOCHET_TX_FEE_ADDRESS = "tb1qkymumss6zj0rxy9l3v5vqxqwwffy8jjsyhrkrg";
 
     private final static int RICOCHET_ACCOUNT = Integer.MAX_VALUE;
-
-    public final static BigInteger masanariFeeAmountV1 = BigInteger.valueOf(200000L);
-    public final static BigInteger masanariFeeAmountV2 = BigInteger.valueOf(200000L);
 
     private static RicochetMeta instance = null;
 
